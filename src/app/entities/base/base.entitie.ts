@@ -2,12 +2,12 @@ import { randomUUID } from "crypto";
 import BaseInterface from "./base.interface";
 
 export type BaseProps ={
-    id : string;
+    id ?: string;
     description : string;
-    active: boolean;
-    createAt: Date;
-    updateAt: Date;
-    deactivateAt: Date;
+    active ?: boolean;
+    createAt ?: Date;
+    updateAt ?: Date;
+    deactivateAt ?: Date;
 }
 
 export default class Base implements BaseInterface{
@@ -25,8 +25,29 @@ export default class Base implements BaseInterface{
             this._createAt = props.createAt || new Date();
             this._updateAt = props.updateAt || new Date();
             this._deactivateAt = props.deactivateAt || new Date();
+            this.validate();
         }
-   
+        
+    validate(){
+        if(this._id === null || this._id.length === 0){
+            throw new Error("Id cannot be null")
+        }
+        if(this._description.length > 20){
+            throw new Error("Field cannot exceed 20 characters")
+        }
+        if(this.active === null){
+            throw new Error("Id cannot be null")
+        }
+        if(this._createAt === null){
+            throw new Error("Id cannot be null")
+        }
+        if(this._updateAt === null){
+            throw new Error("Id cannot be null")
+        }
+        if(this._deactivateAt === null){
+            throw new Error("Id cannot be null")
+        }
+    }
     activate(){
         this._active = true;
         this._updateAt = new Date();

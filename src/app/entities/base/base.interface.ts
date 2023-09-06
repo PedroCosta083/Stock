@@ -5,6 +5,7 @@ export default interface BaseInterface{
     get createAT(): Date;
     get updateAT(): Date;
     get deactivateAT(): Date;
+    validate() : void;
     activate() : void;
     deactivate() : void;
 }

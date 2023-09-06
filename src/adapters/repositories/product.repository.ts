@@ -1,10 +1,12 @@
-import Category from "../entities/category/category.entitie";
-import Product from "../entities/product/product.entities";
-import ProductRepositoryInterface from "../entities/product/product.repository.interface";
-import SubCategory from "../entities/subcategory/subcategory.entitie";
+import {PrismaClient} from '@prisma/client'
+import Category from "../../app/entities/category/category.entitie";
+import Product from "../../app/entities/product/product.entities";
+import ProductRepositoryInterface from "../../app/entities/product/product.repository.interface";
+import SubCategory from "../../app/entities/subcategory/subcategory.entitie";
 
+const prisma = PrismaClient();
 
-export default class ProductRepository implements ProductRepositoryInterface{
+export default class PrismaProductRepository implements ProductRepositoryInterface{
     private products:Product[]=[];
     private subcategories: SubCategory[]=[];
     private categories: Category[]=[];

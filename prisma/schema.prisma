@@ -9,3 +9,12 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Category {
+  id           String   @id @default(uuid())
+  description  String
+  active       Boolean
+  createAt     DateTime 
+  updateAt     DateTime 
+  deactivateAt DateTime
+}
