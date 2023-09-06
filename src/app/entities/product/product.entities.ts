@@ -25,9 +25,13 @@ export default class Product extends Base implements ProductInterface{
             this._expirationDate = props.expirationDate || new Date(); 
             this._manufacturingDate = props.manufacturingDate || new Date() ;
             this._price = props.price ;
+            
         }
     
-  
+    valdiateProduct(){
+        
+    }
+
     get subCategoryId(): string {
         return this._subCategoryId;
     }
