@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import Category from "../../app/entities/category/category.entitie";
-import CategoryRepositoryInterface from "../../app/entities/category/category.repository.interface";
+import Category from "../../domain/category/category.entitie";
+import CategoryRepositoryInterface from "../../domain/category/category.repository.interface";
 
 const prisma = new PrismaClient();
 
@@ -14,7 +14,6 @@ export default class CategoryRepository implements CategoryRepositoryInterface{
                     active:category.active,
                     createAt:category.createAT,
                     deactivateAt:category.deactivateAT,
-                    
                     updateAt:category.updateAT
                 }
             })
@@ -22,8 +21,29 @@ export default class CategoryRepository implements CategoryRepositoryInterface{
             console.log(error)
         }
     }
-    update(category: Category): Promise<void> {
-        throw new Error("Method not implemented.");
+    update(category: Category): void {
+        try {
+           prisma.category.update({
+            where:{
+                id:category.id,
+                description:category.description,
+                active:category.active,
+                createAt:category.createAT,
+                deactivateAt:category.deactivateAT,
+                updateAt:category.updateAT
+           } ,
+            data:{
+                id:category.id,
+                description:category.description,
+                active:category.active,
+                createAt:category.createAT,
+                deactivateAt:category.deactivateAT,
+                updateAt:category.updateAT
+            }
+           })
+        } catch (error) {
+            console.log(error)
+        }
     }
     deactivate(categoryId: string): Promise<void> {
         throw new Error("Method not implemented.");
