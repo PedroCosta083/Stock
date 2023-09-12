@@ -34,16 +34,16 @@ export default class Product extends Base implements ProductInterface{
         if (typeof this._batch !== 'string' || this._batch === null || this._batch.length === 0){
             throw new Error("Batch field cannot be null or empty and must be a string.");
         }
-        if (!(this.expirationDate instanceof Date)) {
+        if (!(this._expirationDate instanceof Date)) {
             throw new Error('Expiration Date is required and must be an instance of Date.');
           }
-        if (!(this.manufacturingDate instanceof Date)) {
+        if (!(this._manufacturingDate instanceof Date)) {
         throw new Error('Manufacturing Date is required and must be an instance of Date.');
         }
-        if (this.expirationDate <= this.manufacturingDate) {
+        if (this._expirationDate <= this._manufacturingDate) {
             throw new Error('The expiration date must be after the manufacturing date.');
           }
-        if (typeof this.price !== 'number' || isNaN(this.price)) {
+        if (typeof this._price !== 'number' || isNaN(this._price)) {
         throw new Error('Price is required and must be a valid number.');
         }
     }

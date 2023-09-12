@@ -32,8 +32,8 @@ export default class Base implements BaseInterface{
         }
 
     addName(name: string):void{
-        if(name.length === 0){
-            throw new Error("Name field cannot be empty")
+        if(typeof name !=='string' || name.length === 0 || name === null ){
+            throw new Error("Name field cannot be empty or null and must be an string")
         }
         if(name.length > 20){
             throw new Error("Name field cannot exceed 20 characters")
@@ -52,8 +52,8 @@ export default class Base implements BaseInterface{
         if (typeof this._name !== 'string' || this._name.length > 20) {
             throw new Error("Name field cannot exceed 20 characters and must be string");
         }        
-        if(typeof this._description !== 'string' || this._description.length > 20){
-            throw new Error("Description field cannot exceed 20 characters and must be string")
+        if(typeof this._description !== 'string' || this._description.length > 50 || this._description === null || this._description === '' || this._description.length === 0){
+            throw new Error("Description field cannot be null/empty or exceed 20 characters and must be string")
         }
         if(typeof this._active !== 'boolean' || this._active === null){
             throw new Error("Status cannot be null and must be boolean")

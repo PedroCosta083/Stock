@@ -1,5 +1,6 @@
 import SubCategoryInterface from "./subcategory.interface";
 import Base, { BaseProps } from "../base/base.entitie";
+import { Category } from "@prisma/client";
 
 export type SubCategoryProps = BaseProps &{
     categoryId : string;

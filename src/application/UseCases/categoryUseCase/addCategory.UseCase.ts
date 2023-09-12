@@ -1,6 +1,15 @@
-import BaseUseCaseInterface from "../../entities/base/base.usecase.interface";
-import Category from "../../entities/category/category.entitie";
-import CategoryRepositoryInterface from "../../entities/category/category.repository.interface";
+import BaseUseCaseInterface from "../../../domain/base/base.usecase.interface";
+import Category from "../../../domain/category/category.entitie";
+import CategoryRepositoryInterface from "../../../domain/category/category.repository.interface";
+
+export interface AddCategoryInputDTO{
+    name : string;
+    description : string;
+}
+
+export interface AddCategoryOutputDTO{
+    category:Category;
+}
 
 export default class AddCategoryUseCase implements BaseUseCaseInterface{
     private _categoryRepository : CategoryRepositoryInterface
@@ -8,10 +17,13 @@ export default class AddCategoryUseCase implements BaseUseCaseInterface{
         this._categoryRepository = categoryRepository;
     }
 
-    async execute(input: {description:string}): Promise<Category> {
+    async execute(input: AddCategoryInputDTO): Promise<AddCategoryOutputDTO> {
         const newCategory = new Category(input);
-        await this._categoryRepository.add(newCategory);
-        return newCategory;
+            this._categoryRepository.add(newCategory);
+            const output : AddCategoryOutputDTO = {
+                category : newCategory
+            }
+        return output;
     }
     
 }
