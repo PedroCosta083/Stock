@@ -32,37 +32,40 @@ export default class Base implements BaseInterface{
         }
 
     addName(name: string):void{
-
         if(name.length === 0){
             throw new Error("Name field cannot be empty")
         }
         if(name.length > 20){
             throw new Error("Name field cannot exceed 20 characters")
         }
-
         this._name = name;
-
-    }    
+    }   
+    removeName():void{
+        this._name = "";
+    }
 
     validate():void{
-
-        if(this._id === null || this._id.length === 0){
-            throw new Error("Id cannot be null")
+        
+        if(typeof this._id !== 'string' || this._id === null || this._id.trim() === ''){
+            throw new Error("ID cannot be null or empty and must be a string")
+        }
+        if (typeof this._name !== 'string' || this._name.length > 20) {
+            throw new Error("Name field cannot exceed 20 characters and must be string");
         }        
-        if(this._description.length > 20){
-            throw new Error("Description field cannot exceed 20 characters")
+        if(typeof this._description !== 'string' || this._description.length > 20){
+            throw new Error("Description field cannot exceed 20 characters and must be string")
         }
-        if(this.active === null){
-            throw new Error("Status cannot be null")
+        if(typeof this._active !== 'boolean' || this._active === null){
+            throw new Error("Status cannot be null and must be boolean")
         }
-        if(this._createAt === null){
-            throw new Error("Creation Date cannot be null")
+        if(!(this._createAt instanceof Date) || this._createAt === null){
+            throw new Error("Creation Date cannot be null and must be an instance of Date")
         }
-        if(this._updateAt === null){
-            throw new Error("Update Date cannot be null")
+        if(!(this._updateAt instanceof Date) ||this._updateAt === null){
+            throw new Error("Update Date cannot be null and must be an instance of Date")
         }
-        if(this._deactivateAt === null){
-            throw new Error("Deactivate Date cannot be null")
+        if(!(this._deactivateAt instanceof Date) ||this._deactivateAt === null){
+            throw new Error("Deactivate Date cannot be null and must be an instance of Date")
         }
     }
     activate():void{

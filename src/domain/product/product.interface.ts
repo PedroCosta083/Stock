@@ -4,4 +4,5 @@ export default interface ProductInterface{
     get expirationDate(): Date;
     get manufacturingDate(): Date;
     get price(): number;
+    validateProduct():void;
 }
