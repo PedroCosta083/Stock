@@ -1,4 +1,3 @@
-import { randomUUID } from 'crypto'
 import ProductInterface from './product.interface';
 import Base, { BaseProps } from '../base/base.entitie';
 
@@ -25,11 +24,28 @@ export default class Product extends Base implements ProductInterface{
             this._expirationDate = props.expirationDate || new Date(); 
             this._manufacturingDate = props.manufacturingDate || new Date() ;
             this._price = props.price ;
-            
+            this.validateProduct();
         }
     
-    valdiateProduct(){
-        
+    validateProduct(){
+        if(typeof this._subCategoryId !== 'string' || this._subCategoryId === null || this._subCategoryId.trim() === ''){
+            throw new Error("SubCategory ID cannot be null or empty and must be a string")
+        }
+        if (typeof this._batch !== 'string' || this._batch === null || this._batch.length === 0){
+            throw new Error("Batch field cannot be null or empty and must be a string.");
+        }
+        if (!(this.expirationDate instanceof Date)) {
+            throw new Error('Expiration Date is required and must be an instance of Date.');
+          }
+        if (!(this.manufacturingDate instanceof Date)) {
+        throw new Error('Manufacturing Date is required and must be an instance of Date.');
+        }
+        if (this.expirationDate <= this.manufacturingDate) {
+            throw new Error('The expiration date must be after the manufacturing date.');
+          }
+        if (typeof this.price !== 'number' || isNaN(this.price)) {
+        throw new Error('Price is required and must be a valid number.');
+        }
     }
 
     get subCategoryId(): string {
