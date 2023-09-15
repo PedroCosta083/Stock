@@ -24,7 +24,7 @@ export default class Base implements BaseInterface{
             this._id = props.id || randomUUID();
             this._name = props.name || "" ;
             this._description = props.description;
-            this._active = props.active || true;
+            this._active = props.active || true ;
             this._createAt = props.createAt || new Date();
             this._updateAt = props.updateAt || new Date();
             this._deactivateAt = props.deactivateAt || new Date();
