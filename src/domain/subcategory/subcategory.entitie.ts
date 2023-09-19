@@ -4,6 +4,7 @@ import { Category } from "@prisma/client";
 
 export type SubCategoryProps = BaseProps &{
     categoryId : string;
+    category? : [];
 }
 
 export default class SubCategory extends Base implements SubCategoryInterface{
@@ -20,5 +21,10 @@ export default class SubCategory extends Base implements SubCategoryInterface{
     }
     get categoryId(): string {
         return this._categoryId;
+    }
+    addCategory(category : Category[]):void{
+        if(category.length === 0){
+            throw new Error("There are no Category to add");
+        }
     }
 }

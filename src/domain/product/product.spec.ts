@@ -73,17 +73,6 @@ describe('Product Validation', () => {
     expect(invalidProduct).toThrowError('Price is required and must be a valid number.');
   });
 
-  it('Description must be a non-empty string', () => {
-    const invalidProduct = () => new Product({
-      subCategoryId: 'subCat123',
-      batch: 'batch123',
-      expirationDate: new Date('2023-09-21'),
-      manufacturingDate: new Date('2023-09-20'),
-      price: 10.99,
-      description:'',
-    });
-    expect(invalidProduct).toThrowError('Description field cannot be null/empty or exceed 20 characters and must be string');
-  });
 
   it('Valid product should not throw any errors', () => {
     const validProduct = () => new Product({

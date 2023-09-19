@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
 import BaseInterface from "./base.interface";
+import { stringNotNullAndBlankSpace } from "../../util/regex/regex";
 
 export type BaseProps ={
     id ?: string;
@@ -32,11 +33,12 @@ export default class Base implements BaseInterface{
         }
 
     addName(name: string):void{
-        if(typeof name !=='string' || name.length === 0 || name === null ){
-            throw new Error("Name field cannot be empty or null and must be an string")
-        }
-        if(name.length > 20){
-            throw new Error("Name field cannot exceed 20 characters")
+        
+        if (stringNotNullAndBlankSpace.test(name) === false) { 
+            throw new Error("Name is required "); 
+          } 
+        if(name.length > 50){
+            throw new Error("Name field cannot exceed 50 characters")
         }
         this._name = name;
     }   
@@ -44,19 +46,28 @@ export default class Base implements BaseInterface{
         this._name = "";
     }
 
+    activate():void{
+        if(typeof this._active !== 'boolean' || this._active === null){
+            throw new Error("Status cannot be null and must be boolean")
+        }
+        this._active = true;
+        this._updateAt = new Date();
+    }
+    deactivate():void{
+        this._active = false;
+        this._deactivateAt = new Date();
+    }
+
     validate():void{
         
         if(typeof this._id !== 'string' || this._id === null || this._id.trim() === ''){
             throw new Error("ID cannot be null or empty and must be a string")
         }
-        if (typeof this._name !== 'string' || this._name.length > 20) {
-            throw new Error("Name field cannot exceed 20 characters and must be string");
+        if(this._id === null){
+            throw new Error("ID cannot be null")
         }        
         if(typeof this._description !== 'string' || this._description.length > 50 || this._description === null || this._description === '' || this._description.length === 0){
-            throw new Error("Description field cannot be null/empty or exceed 20 characters and must be string")
-        }
-        if(typeof this._active !== 'boolean' || this._active === null){
-            throw new Error("Status cannot be null and must be boolean")
+            throw new Error("Description field cannot be null/empty or exceed 50 characters and must be string")
         }
         if(!(this._createAt instanceof Date) || this._createAt === null){
             throw new Error("Creation Date cannot be null and must be an instance of Date")
@@ -67,14 +78,6 @@ export default class Base implements BaseInterface{
         if(!(this._deactivateAt instanceof Date) ||this._deactivateAt === null){
             throw new Error("Deactivate Date cannot be null and must be an instance of Date")
         }
-    }
-    activate():void{
-        this._active = true;
-        this._updateAt = new Date();
-    }
-    deactivate():void{
-        this._active = false;
-        this._deactivateAt = new Date();
     }
 
     get id(): string {
