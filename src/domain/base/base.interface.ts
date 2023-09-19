@@ -8,7 +8,7 @@ export default interface BaseInterface{
     get deactivateAT(): Date;
     addName(name : string) : void;
     removeName() : void;
-    validate() : void;
     activate() : void;
     deactivate() : void;
+    validate() : void;
 }
