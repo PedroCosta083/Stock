@@ -2,8 +2,8 @@
 
 ## Base
 
-1. [ ] Entity
-2. [ ] Spec
+1. [x] Entity
+2. [x] Spec
 3. [ ] Repository
 4. [ ] Facade
 5. [ ] Factory

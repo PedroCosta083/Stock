@@ -51,19 +51,33 @@ describe("Base validation", () => {
     );
   });
   it("Status cannot be true to activate", () => {
-    const base = new Base({
-      description: "Exemplo",
-      active: false, 
-    });
-    expect(() => base.activate()).not.toThrow();
-    expect(base.active).toBe(true);
+      const invalidBase = new Base({
+        description:'Description',
+      })
+      expect(()=>invalidBase.activate()).toThrowError('Status there is already activated')
   });
   it("Status cannot be false to deactivate", () => {
+    const invalidBase = new Base({
+      description:'Description',
+    })
+    invalidBase.deactivate()
+    expect(()=>invalidBase.deactivate()).toThrowError('Status there is already deactivated')
+  });
+
+  it("Status value must be false when deactivate is executed", () => {
     const base = new Base({
-      description: "Exemplo",
-      active: true, 
+      description: "Description",
     });
-    expect(() => base.deactivate()).not.toThrow();
+    base.deactivate();
     expect(base.active).toBe(false);
+  });
+
+  it("Status value must be true when activated is executed", () => {
+    const base = new Base({
+      description: "Description",
+    });
+    base.deactivate();
+    base.activate();
+    expect(base.active).toBe(true);
   });
 });
