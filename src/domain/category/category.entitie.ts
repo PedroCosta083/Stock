@@ -15,26 +15,19 @@ export default class Category extends Base implements CategoryInterface{
     get subCategory(): SubCategory[] {
         return this._subCategory;
     }
-    AddSubcategoryToCategory(subCategory: SubCategory[]):void{
-        if (subCategory.length === 0) {
+    AddSubcategoryToCategory(arraySubCategory: SubCategory[]):void{
+        if (arraySubCategory.length === 0) {
             throw new Error("There are no Sub Category to add");
           }
-          this._subCategory = this._subCategory.concat(subCategory);
+          this._subCategory = this._subCategory.concat(arraySubCategory);
     }
-    removeSubcategoryFromCategory(subCategory: SubCategory[]):void{
-        if(this._subCategory.length === 0){
-            throw new Error("There are no Sub Category to remove");
+    removeSubcategoryFromCategory(arraySubcategory:SubCategory[]):void{
+        if (arraySubcategory.length === 0) {
+            throw new Error("There are no Sub Categories to remove");
         }
-        if(subCategory.length === 0){
-            throw new Error("There are no Sub Category to remove");
-        }
-        this._subCategory.map((subCategorys,index) => {
-           subCategory.map((subCategoryToRemove)=>{
-            if(subCategorys.id === subCategoryToRemove.id){
-                this._subCategory.splice(index,1);
-            }
-           })
-        })
+    
+        this._subCategory = this._subCategory.filter((subCat) => {
+            return !arraySubcategory.includes(subCat);
+        });
     }
-
 }
