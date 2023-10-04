@@ -25,7 +25,6 @@ export default class Category extends Base implements CategoryInterface{
         if (arraySubcategory.length === 0) {
             throw new Error("There are no Sub Categories to remove");
         }
-    
         this._subCategory = this._subCategory.filter((subCat) => {
             return !arraySubcategory.includes(subCat);
         });
