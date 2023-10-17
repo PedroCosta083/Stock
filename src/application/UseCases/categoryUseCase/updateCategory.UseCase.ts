@@ -1,4 +1,3 @@
-
 import BaseUseCaseInterface from "../../../domain/base/base.usecase.interface";
 import Category from "../../../domain/category/category.entity";
 
@@ -25,8 +24,12 @@ export default class UpdateCategoryUseCase implements BaseUseCaseInterface {
     this._categoryRepository = categoryRepository;
   }
 
-  async execute(input: UpdateCategoryInputDTO): Promise<UpdateCategoryOutputDTO> {
-    const categoryIndex = input.categories.findIndex((category) => category.id === input.id);
+  async execute(
+    input: UpdateCategoryInputDTO
+  ): Promise<UpdateCategoryOutputDTO> {
+    const categoryIndex = input.categories.findIndex(
+      (category) => category.id === input.id
+    );
     const timeNow = new Date();
     if (categoryIndex !== -1) {
       const updatedCategory = new Category({
@@ -35,9 +38,9 @@ export default class UpdateCategoryUseCase implements BaseUseCaseInterface {
         description: input.description,
         createAt: input.createdAt,
         updateAt: timeNow,
-        deactivateAt: input.deactivatedAt
+        deactivateAt: input.deactivatedAt,
       });
-      await this._categoryRepository.update(updatedCategory);
+      this._categoryRepository.update(updatedCategory);
       const output: UpdateCategoryOutputDTO = {
         category: updatedCategory,
       };
