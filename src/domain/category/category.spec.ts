@@ -1,5 +1,5 @@
-import SubCategory from "../subcategory/subcategory.entitie";
-import Category, { CategoryProps } from "./category.entitie";
+import SubCategory from "../subcategory/subcategory.entity";
+import Category, { CategoryProps } from "./category.entity";
 
 // Função utilitária para criar uma instância de Category com subcategorias de teste
 function createCategoryWithSubcategories(subcategories: SubCategory[]): Category {

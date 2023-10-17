@@ -1,6 +1,6 @@
 import CategoryInterface from "./category.interface";
-import Base, { BaseProps } from "../base/base.entitie";
-import SubCategory from "../subcategory/subcategory.entitie";
+import Base, { BaseProps } from "../base/base.entity";
+import SubCategory from "../subcategory/subcategory.entity";
 
 export type CategoryProps = BaseProps &{
     subCategory?:SubCategory[];

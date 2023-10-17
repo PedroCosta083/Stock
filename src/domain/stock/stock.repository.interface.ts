@@ -1,4 +1,4 @@
-import Stock from "./stock.entitie";
+import Stock from "./stock.entity";
 
 export default interface StockRepositoryInterface{
     add(stock: Stock) : Promise<void>;

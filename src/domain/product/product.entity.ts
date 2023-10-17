@@ -1,5 +1,5 @@
 import ProductInterface from './product.interface';
-import Base, { BaseProps } from '../base/base.entitie';
+import Base, { BaseProps } from '../base/base.entity';
 
 export type productProps = BaseProps &{
     subCategoryId : string;

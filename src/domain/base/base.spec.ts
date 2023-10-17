@@ -1,4 +1,4 @@
-import Base, { BaseProps } from "./base.entitie";
+import Base, { BaseProps } from "./base.entity";
 
 describe("Base validation", () => {
   it("Description Cannot be blank space", () => {

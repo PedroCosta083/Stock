@@ -1,5 +1,5 @@
-import SubCategory from "../subcategory/subcategory.entitie";
-import Category from "./category.entitie";
+import SubCategory from "../subcategory/subcategory.entity";
+import Category from "./category.entity";
 
 export default interface CategoryRepositoryInterface{
     add(category:Category) : void;

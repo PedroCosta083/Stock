@@ -1,4 +1,4 @@
-import Product from "./product.entities";
+import Product from "./product.entity";
 export default interface ProductRepositoryInterface {
     findById(id : string): Promise<Product | undefined>;
     findAllBySubcategory(subCategoryId : string) : Promise<Product[] | undefined>;

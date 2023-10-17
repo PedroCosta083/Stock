@@ -1,4 +1,4 @@
-import SubCategory from "./subcategory.entitie"
+import SubCategory from "./subcategory.entity"
 
 describe('SubCategory Validation',()=>{
     it('Category ID must be null or empty and must be a string',()=>{

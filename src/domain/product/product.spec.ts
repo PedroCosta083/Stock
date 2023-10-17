@@ -1,4 +1,4 @@
-import Product from "./product.entities";
+import Product from "./product.entity";
 
 describe('Product Validation', () => {
   it('SubCategory ID must be a non-empty string', () => {

@@ -1,4 +1,4 @@
-import SubCategory from "./subcategory.entitie";
+import SubCategory from "./subcategory.entity";
 
 export default interface SubCategoryRepositoryInterface{
     add(subCategory: SubCategory) : Promise<void>;

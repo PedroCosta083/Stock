@@ -1,6 +1,6 @@
-import Category from "./domain/category/category.entitie";
-import Product from "./domain/product/product.entities";
-import SubCategory from "./domain/subcategory/subcategory.entitie";
+import Category from "./domain/category/category.entity";
+import Product from "./domain/product/product.entity";
+import SubCategory from "./domain/subcategory/subcategory.entity";
 
 const categoria = new Category({
   description: "Alimentos",

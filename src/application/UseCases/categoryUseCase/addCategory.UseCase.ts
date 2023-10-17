@@ -1,5 +1,5 @@
 import BaseUseCaseInterface from "../../../domain/base/base.usecase.interface";
-import Category from "../../../domain/category/category.entitie";
+import Category from "../../../domain/category/category.entity";
 import CategoryRepositoryInterface from "../../../domain/category/category.repository.interface";
 
 export interface AddCategoryInputDTO{

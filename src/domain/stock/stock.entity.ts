@@ -1,5 +1,5 @@
 
-import Base, { BaseProps } from "../base/base.entitie";
+import Base, { BaseProps } from "../base/base.entity";
 import Address from "../objects/address/address";
 import Status from "../objects/status/status";
 import StockInterface from "./stock.interface";
